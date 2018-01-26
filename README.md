@@ -30,12 +30,12 @@ npm install --save angular-dataset
 ```
 Once installed you need to import our main module:
 ```js
-import { AngularDataset } from \'angular-dataset\';
+import { AngularDataset } from 'angular-dataset';
 ```
 The only remaining part is to list the imported module in your application module. The exact method will be slightly
 different for the root (top-level) module for which you should end up with the code similar to (notice `AngularDataset.forRoot()`):
 ```js
-import { AngularDataset } from \'angular-dataset\';
+import { AngularDataset } from 'angular-dataset';
 
 @NgModule({
   declarations: [AppComponent, ...],
@@ -49,7 +49,7 @@ export class AppModule {
 Other modules in your application can simply import `AngularDataset`:
 
 ```js
-import { AngularDataset } from \'angular-dataset\';
+import { AngularDataset } from 'angular-dataset';
 
 @NgModule({
   declarations: [OtherComponent, ...],
@@ -66,7 +66,7 @@ In your systemjs config file, `map` needs to tell the System loader where to loo
 ```js
 map: {
   ...
-  \'angular-dataset\': \'node_modules/angular-dataset/index.js\',
+  'angular-dataset': 'node_modules/angular-dataset/index.js',
   ...
 }
 ```
@@ -118,10 +118,10 @@ I think the way to learn how to use angular-dataset is by jumping ahead to the [
 
 | | | |
 |-|-|-|
-| [( 1 )](https://plnkr.co/edit/TvZuY3tCJSmWcFG8p9eQ?p=preview)	| Usage with basic settings. |
-| [( 2 )](https://plnkr.co/edit/tRf5TEM0mc9f1lAbaMhD?p=preview)	| The same as (1) but with url pagination.<br>To examine this in the plunker, pop out the preview window of the plunker by clicking the blue 'X' button in the upper right corner,- only then you'll be able to see the url changes in the browser. |
-| [( 3 )](https://plnkr.co/edit/IMzFgUBAjBTPYWUxppSX?p=preview)	| The same as (1) but with custom pagination settings. |
-| [( 4 )](https://plnkr.co/edit/JZPwQYMa5TNZE94ESBv3?p=preview)	| The same as (2) but with custom pagination settings. |
+| [(1)](https://plnkr.co/edit/TvZuY3tCJSmWcFG8p9eQ?p=preview)	| Usage with basic settings. |
+| [(2)](https://plnkr.co/edit/tRf5TEM0mc9f1lAbaMhD?p=preview)	| The same as (1) but with url pagination.<br>To examine this in the plunker, pop out the preview window of the plunker by clicking the blue 'X' button in the upper right corner,- only then you'll be able to see the url changes in the browser. |
+| [(3)](https://plnkr.co/edit/IMzFgUBAjBTPYWUxppSX?p=preview)	| The same as (1) but with custom pagination settings. |
+| [(4)](https://plnkr.co/edit/JZPwQYMa5TNZE94ESBv3?p=preview)	| The same as (2) but with custom pagination settings. |
 
 ## Troubleshooting
 You can ask for support in the StackOverflow site (under the angular-dataset tag).
