@@ -1,22 +1,27 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { DataService } from './data.service.js';
 export { DataService } from './data.service.js';
 
-import { SearchListComponent } from './search-list/search-list.component.js';
-import { PaginationComponent } from './pagination/pagination.component.js';
+import { SearchListComponent } from './search-list/search-list.component';
+import { PaginationComponent } from './pagination/pagination.component';
+
+import { SortDirective } from './sorting/sort.directive';
+export { SortDirective } from './sorting/sort.directive';
 
 @NgModule({
-    imports: [ CommonModule, HttpModule ],
+    imports: [ CommonModule, HttpClientModule ],
     declarations: [
         SearchListComponent,
-        PaginationComponent
+        PaginationComponent,
+		SortDirective
     ],
     exports: [
         SearchListComponent,
-        PaginationComponent
+        PaginationComponent,
+		SortDirective
     ]
 })
 
