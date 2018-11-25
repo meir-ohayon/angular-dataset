@@ -1,10 +1,14 @@
 # Angular Dataset
 angular-dataset enable displaying json data (from json file or json emitted from server api) with ease.
 
-angular-dataset consist of three components:
-* Service to fetch the json data and filter it to match requirements of pagination or search results.
+angular-dataset consist of one data service one directive and two components:
+* Service to fetch the json data and filter it to match requirements of pagination or search results. Notice that this package does not offer table component with 'datasource' input (as it do offer search and pagination components), rather it offers the required data service while the table itself (if you wish it to be a table display) you need to build yourself with html (follow the [demos](#demo-links-plunker) to see how this concept works - you can see there that building the table view yourself rather than using some 'datatable' component does not entails much of codding and in the other hand have its advantages).<br>The advantages of this approach over the table component approach are:
+  * You are not limited to table view, so you can do list view or some tree view (for hierarchical nature data) or some collapsed view - really any view form you wish to have. See the 5th demo listed on [demos](#demo-links-plunker) section that uses list view rather than table view.
+  * You have moe control on formatting the display on specific fields - i.e. checkboxes for boolean values, formating of datetime fields, etc. (in the 5th and 6th demo I use checkboxes for boolean vakues).
+  * You can add custom columns or rows - i.e. calculated column, coloumn with buttons actions (edit, delete, select etc.), grouping rows, calculated rows to summarize group ,etc.
 * Pagination component to support pagination.
 * Search component to support search with (optionally) auto complete.
+* Support sort in table display through the Sortable Directive - the actual sorting you'll do yourself in the component code, but this directive handels the arrow display and also the sort order toggling (i.e. toggling ascending/descending order). See it in action in the 6th demo listed on [demos](#demo-links-plunker) section.  
 All of that enables you to create very easily dataset (typically table) to display json data along with pagination and search (that includes auto complete by default).
 
 ## Table of Contents
@@ -15,12 +19,13 @@ All of that enables you to create very easily dataset (typically table) to displ
 - [Getting Started](#getting-started)
   - [Search component API](#search-component-api)
   - [Pagination component API](#pagination-component-api)
+  - [Sortable directive API](#sortable-directive-api)
 - [Demo Links (Plunker)](#demo-links-plunker)
 - [Troubleshooting](#troubleshooting)
 - [Have you found a bug or want to contribute?](#have-you-found-a-bug-or-want-to-contribute)
 
 ## Dependencies
-* [Angular 4+](https://angular.io)
+* [Angular 6+](https://angular.io)
 * [Bootstrap 4](https://www.getbootstrap.com)
 
 ## Installation
@@ -60,7 +65,7 @@ export class OtherModule {
 ```
 
 ### SystemJS
-If you are using SystemJS, you should also adjust your configuration to map \'angular-dataset\' to its main module file.
+If you are for some reason still using SystemJS (rather than the recommended angular cli that goes with webpack), you should also adjust your configuration to map \'angular-dataset\' to its main module file.
 
 In your systemjs config file, `map` needs to tell the System loader where to look for \'angular-dataset\':
 ```js
@@ -114,14 +119,24 @@ I think the way to learn how to use angular-dataset is by jumping ahead to the [
 | linksStyles | json string | \' { \"color\": \"blue\" }\' | CSS settings for the links. |
 | activeLinkStyles | json string | \'{ \"font-weight\": \"bolder\", \"color\": \"red\" }\' | CSS settings for the active link. |
 
+### Sortable directive API
+
+#### Methods
+
+| | | |
+|-|-|-|
+| sort | sort accepts 4 arguments: <br>* The field name <br>* The field type - some key value that needs to corespond with the component sort code that you'll write for distinguishing the sort type that needs to be done (aka string sort / number sort / date sort) <br>* The $event object that it used for holding the current sort direction <br>* The coloumn index in the table display |
+
 ## Demo Links (Plunker)
 
 | | | |
 |-|-|-|
-| [(1)](https://plnkr.co/edit/TvZuY3tCJSmWcFG8p9eQ?p=preview)	| Usage with basic settings. |
-| [(2)](https://plnkr.co/edit/tRf5TEM0mc9f1lAbaMhD?p=preview)	| The same as (1) but with url pagination.<br>To examine this in the plunker, pop out the preview window of the plunker by clicking the blue 'X' button in the upper right corner,- only then you'll be able to see the url changes in the browser. |
-| [(3)](https://plnkr.co/edit/IMzFgUBAjBTPYWUxppSX?p=preview)	| The same as (1) but with custom pagination settings. |
-| [(4)](https://plnkr.co/edit/JZPwQYMa5TNZE94ESBv3?p=preview)	| The same as (2) but with custom pagination settings. |
+| [(1)](https://plnkr.co/edit/gtWODTK8BZjo2LCajLSC?p=preview)	| Usage with basic settings. |
+| [(2)](https://plnkr.co/edit/KVEflJhInGRBMxii9IZK?p=preview)	| The same as (1) but with url pagination.<br>To examine this in the plunker, pop out the preview window of the plunker by clicking the blue 'X' button in the upper right corner,- only then you'll be able to see the url changes in the browser. |
+| [(3)](https://plnkr.co/edit/z10GGGFRmtdxGK9xjmAz?p=preview)	| The same as (1) but with custom pagination settings. |
+| [(4)](https://plnkr.co/edit/7xwaHLzLOP4Ql1Bwe49o?p=preview)	| The same as (2) but with custom pagination settings. |
+| [(5)](https://plnkr.co/edit/aTSBFAQ4zycCRpAPQHAl?p=preview)	| This demo is for materializing the fact that Angular Dataset is not limited to table display,- rather you are the one that decides and build the display in any form you wish to have. In this specific demo the list view had been chosen. |
+| [(6)](https://plnkr.co/edit/5Z9WJzzp8xBqKU3plGh4?p=preview)	| This demo demonstrates usage of Angular Dataset with sorting capabilities. Click on one of the table column headers (except the 'Completed' header) to sort by this column in ascending order - clicking again will toggle the sort order (to descending order in this case). |
 
 ## Troubleshooting
 You can ask for support in the StackOverflow site (under the angular-dataset tag).
